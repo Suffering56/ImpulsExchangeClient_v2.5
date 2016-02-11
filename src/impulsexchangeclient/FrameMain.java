@@ -37,6 +37,7 @@ public class FrameMain extends javax.swing.JFrame {
         ftpOptionsCallBtn = new javax.swing.JMenuItem();
         firebirdOptionsCallBtn = new javax.swing.JMenuItem();
         mySqlOptionsCallBtn = new javax.swing.JMenuItem();
+        adminOptionsCallBtn = new javax.swing.JMenuItem();
         exitMenuBtn = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         monitorViewerCallBtn = new javax.swing.JMenuItem();
@@ -159,6 +160,14 @@ public class FrameMain extends javax.swing.JFrame {
             }
         });
         mainMenu.add(mySqlOptionsCallBtn);
+
+        adminOptionsCallBtn.setText("Настройки администратора");
+        adminOptionsCallBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminOptionsCallBtnActionPerformed(evt);
+            }
+        });
+        mainMenu.add(adminOptionsCallBtn);
 
         exitMenuBtn.setText("Выход");
         exitMenuBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -395,6 +404,10 @@ public class FrameMain extends javax.swing.JFrame {
         new FrameHelpErrors(this).setVisible(true);
     }//GEN-LAST:event_helpErrorsCallBtnActionPerformed
 
+    private void adminOptionsCallBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminOptionsCallBtnActionPerformed
+        new FrameAccessOptions(this, "ADMIN").setVisible(true);
+    }//GEN-LAST:event_adminOptionsCallBtnActionPerformed
+
     public DefaultListModel getExportOrdersModel() {
         return exportOrdersModel;
     }
@@ -408,6 +421,7 @@ public class FrameMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addOrderBtn;
+    private javax.swing.JMenuItem adminOptionsCallBtn;
     private javax.swing.JMenuItem archiveCallBtn;
     private javax.swing.JMenu archivesMenu;
     private javax.swing.JButton deleteOrderBtn;

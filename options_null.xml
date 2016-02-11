@@ -47,5 +47,11 @@
         <Password/>
 	
     </MySQL>
+    
+    <Admin>
+		
+        <Password>;&gt;&gt;</Password>
+	
+    </Admin>
 
 </Options>

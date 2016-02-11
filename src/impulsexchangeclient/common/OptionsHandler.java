@@ -54,6 +54,8 @@ public class OptionsHandler {
                     saveFirebirdOptions();
                 case "MySQL":
                     saveMySqlOptions();
+                case "ADMIN":
+                    saveAdminOptions();
             }
 
             FileOutputStream out = new FileOutputStream(xmlFile);
@@ -120,6 +122,12 @@ public class OptionsHandler {
         replaceNode(section, nodePath, Service.encode(Options.getMySqlPassword()));
     }
 
+    private static void saveAdminOptions() throws XPathExpressionException {
+        Element section = (Element) xPath.evaluate("Options/Admin", doc, XPathConstants.NODE);
+        String nodePath = "Options/Admin/Password";
+        replaceNode(section, nodePath, Service.encode(Options.getAdminPassword()));
+    }
+
     /**
      * Чтение настроек, хранящихся в файле "options.xml" и их дальнейшая
      * установка в качестве значений полей класса "Options".
@@ -151,7 +159,7 @@ public class OptionsHandler {
             currentNode = (Node) xPath.evaluate("Options/Firebird/Password", doc, XPathConstants.NODE);
             Options.setFirebirdPassword(Service.decode(currentNode.getTextContent()));
             currentNode = (Node) xPath.evaluate("Options/Firebird/Encoding", doc, XPathConstants.NODE);
-            Options.setFirebirdEncoding(currentNode.getTextContent()); 
+            Options.setFirebirdEncoding(currentNode.getTextContent());
             currentNode = (Node) xPath.evaluate("Options/Firebird/FBServerPath", doc, XPathConstants.NODE);
             Options.setFbserverPath(currentNode.getTextContent());
 
@@ -166,6 +174,11 @@ public class OptionsHandler {
             Options.setMySqlUser(Service.decode(currentNode.getTextContent()));
             currentNode = (Node) xPath.evaluate("Options/MySQL/Password", doc, XPathConstants.NODE);
             Options.setMySqlPassword(Service.decode(currentNode.getTextContent()));
+
+            //Чтение настроек администратора
+            currentNode = (Node) xPath.evaluate("Options/Admin/Password", doc, XPathConstants.NODE);
+            Options.setAdminPassword(Service.decode(currentNode.getTextContent()));
+
         } catch (XPathExpressionException | ParserConfigurationException | SAXException | IOException | DOMException | NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Ошибка чтения настроек программы: \r\n"
                     + "ex.toString(): " + ex.toString(), "OptionsHandler.readOptions()", JOptionPane.ERROR_MESSAGE);

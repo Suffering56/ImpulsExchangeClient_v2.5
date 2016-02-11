@@ -1,6 +1,7 @@
 package impulsexchangeclient.menu;
 
 import impulsexchangeclient.FrameMain;
+import impulsexchangeclient.common.Options;
 import javax.swing.JOptionPane;
 
 public class FrameAccessOptions extends javax.swing.JFrame {
@@ -70,7 +71,7 @@ public class FrameAccessOptions extends javax.swing.JFrame {
     }
 
     private void checkingPassword() {
-        if (passwordField.getText().equals("admin")) {
+        if (passwordField.getText().equals(Options.getAdminPassword())) {
             switch (nextFrame) {
                 case "Department":
                     new FrameOptionsDepartment(mainFrame).setVisible(true);
@@ -86,6 +87,10 @@ public class FrameAccessOptions extends javax.swing.JFrame {
                     break;
                 case "MySQL":
                     new FrameOptionsMySQL(mainFrame).setVisible(true);
+                    this.dispose();
+                    break;
+                case "ADMIN":
+                    new FrameOptionsAdmin(mainFrame).setVisible(true);
                     this.dispose();
                     break;
             }

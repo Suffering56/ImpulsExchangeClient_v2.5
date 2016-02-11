@@ -130,25 +130,14 @@ public class Options {
         Options.mySqlPassword = mySqlPassword;
     }
 
-    public static String toStr() {
-        return "OptionsXML{\r\n"
-                + "departmentName = " + departmentName + "\r\n"
-                + "swndFilePath = " + swndFilePath + "\r\n"
-                + "swndFileName = " + swndFileName + "\r\n"
-                + "ftpAddress = " + ftpAddress + "\r\n"
-                + "ftpLogin = " + ftpLogin + "\r\n"
-                + "ftpPassword = " + ftpPassword + "\r\n"
-                + "firebirdAddress = " + firebirdDatabasePath + "\r\n"
-                + "firebirdUser = " + firebirdUser + "\r\n"
-                + "firebirdPassword = " + firebirdPassword + "\r\n"
-                + "firebirdEncoding = " + firebirdEncoding + "\r\n"
-                + "mySqlAddress = " + mySqlAddress + "\r\n"
-                + "mySqlPort = " + mySqlPort + "\r\n"
-                + "mySqlDatabaseName = " + mySqlDatabaseName + "\r\n"
-                + "mySqlUser = " + mySqlUser + "\r\n"
-                + "mySqlPassword = " + mySqlPassword + "\r\n"
-                + '}';
+    public static String getAdminPassword() {
+        return adminPassword;
     }
+
+    public static void setAdminPassword(String adminPassword) {
+        Options.adminPassword = adminPassword;
+    }
+
     //настройки отдела
     private static String departmentName;
     private static String swndFilePath;
@@ -169,4 +158,6 @@ public class Options {
     private static String mySqlDatabaseName;
     private static String mySqlUser;
     private static String mySqlPassword;
+    //настройки администратора
+    private static String adminPassword;
 }
