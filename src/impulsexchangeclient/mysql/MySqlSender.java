@@ -21,31 +21,52 @@ public class MySqlSender {
      * @return boolean: true - если процесс экспорта был успешно завершен. false
      * - если во время экспорта возникли какие-либо ошибки.
      */
-    public boolean export() {
+    public boolean runTransaction() {
         boolean result = false;
         MySqlConnector mySqlInstance = MySqlConnector.getInstance();
         Connection connection = mySqlInstance.connect();
         if (connection != null) {
             try {
+                connection.setAutoCommit(false);
                 statement = connection.createStatement();
-
-                for (OrderEntity entity : monitorEntityList) {
-                    String fOrder = entity.getFullOrderName();
-                    if (!orderExistenceCheck(fOrder)) {                         //если такого заказа НЕТ В ОТГРУЗКЕ
-                        queriesPreparation(entity);                             //!!!
-                    } else if (showConfirmDlg(fOrder) == 0) {                   //если была нажата кнопка "Заменить"
-                        replaceOrder(entity);
-                    }
-                }
+                executeGeneralTransaction();
+                connection.commit();
                 result = true;
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Ошибка при работе с базой данных MySQL. \r\n"
                         + "ex.toString(): " + ex, "MySqlSender.export()", JOptionPane.ERROR_MESSAGE);
+                try {
+                    connection.rollback();
+                } catch (SQLException exx) {
+                    JOptionPane.showMessageDialog(null, "Произошла ошибка при откате изменений в MySQL. \r\n"
+                            + "ex.toString(): " + exx, "MySqlSender.rollback()", JOptionPane.ERROR_MESSAGE);
+                }
             } finally {
+                try {
+                    connection.setAutoCommit(true);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Произошла ошибка при установлении параметра AutoCommit(true). \r\n"
+                            + "ex.toString(): " + ex, "MySqlSender.setAutoCommit(true)", JOptionPane.ERROR_MESSAGE);
+                }
                 mySqlInstance.disconnect();
             }
         }
         return result;
+    }
+
+    /**
+     * Перебор заказов, и подготовка соответствующих запросов к базе данных
+     * отгрузочной программы (MySQL)
+     */
+    private void executeGeneralTransaction() throws SQLException {
+        for (OrderEntity entity : monitorEntityList) {
+            String fOrder = entity.getFullOrderName();
+            if (!orderExistenceCheck(fOrder)) {                         //если такого заказа НЕТ В ОТГРУЗКЕ
+                queriesPreparation(entity);                             //!!!
+            } else if (showConfirmDlg(fOrder) == 0) {                   //если была нажата кнопка "Заменить"
+                replaceOrder(entity);
+            }
+        }
     }
 
     /**
@@ -97,7 +118,8 @@ public class MySqlSender {
     }
 
     /**
-     * Инициализация запроса на добавление нового заказа в отгрузку.
+     * Инициализация и выполнение запроса на добавление нового заказа в
+     * отгрузку.
      *
      * @param entity Объект класса OrderEntity содержащий всю необходимую
      * информацию об экспортируемом заказе.
