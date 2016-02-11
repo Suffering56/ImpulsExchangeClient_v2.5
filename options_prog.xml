@@ -22,7 +22,7 @@
 	
     <Firebird>
 		
-        <DatabasePath>F:\rab_kopiy.FDB</DatabasePath>
+        <DatabasePath>E:\rab_kopiy.FDB</DatabasePath>
 		
         <User>X^XIGF</User>
 		
@@ -47,7 +47,7 @@
         <Password/>
 	
     </MySQL>
-
+    
     <Admin>
 		
         <Password>;&gt;&gt;</Password>
