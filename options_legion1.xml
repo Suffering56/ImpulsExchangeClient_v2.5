@@ -2,7 +2,7 @@
 	
     <Department>
 		
-        <DepartmentName>655</DepartmentName>
+        <DepartmentName>&lt;&gt;</DepartmentName>
 		
         <SwndFilePath>C:\swnd5.arc</SwndFilePath>
 		
@@ -22,7 +22,7 @@
 	
     <Firebird>
 		
-        <DatabasePath>C:\</DatabasePath>
+        <DatabasePath>H:\rab_kopiy.FDB</DatabasePath>
 		
         <User>X^XIGF</User>
 		
@@ -40,14 +40,15 @@
                 
         <Port>8865</Port>
                 
-        <DatabaseName>rtsnytw</DatabaseName>
+        <DatabaseName>rtsnytw7</DatabaseName>
 		
         <User>wtty</User>
 		
         <Password/>
 	
     </MySQL>
-    
+
+
     <Admin>
 		
         <Password>;&gt;&gt;</Password>

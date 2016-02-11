@@ -47,7 +47,7 @@
         <Password/>
 	
     </MySQL>
-    
+
     <Admin>
 		
         <Password>;&gt;&gt;</Password>
