@@ -452,7 +452,6 @@ public class FrameMonitor extends javax.swing.JFrame {
                 mountCalendar.add(Calendar.DAY_OF_MONTH, 1);                    //смещаемся на следующий день производства
                 totalRemaining -= remaining;
             }
-        } else if (orderReqDays == 0) {
         } else {
             if (mountCalendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {   //выборка даты для datam == ПОНЕДЕЛЬНИК
                 mountCalendar.add(Calendar.DAY_OF_MONTH, -2);                   //смещаемся на СУББОТУ
