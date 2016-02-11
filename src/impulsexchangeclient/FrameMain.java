@@ -323,7 +323,7 @@ public class FrameMain extends javax.swing.JFrame {
             if (Service.preScreeningFTP()) {   //<-предварительная проверка соединения с FTP
                 //экспорт в отгрузку
                 MySqlSender sender = new MySqlSender(monitorEntityList);
-                boolean isSuccesfulExport = sender.export();
+                boolean isSuccesfulExport = sender.runTransaction();
                 if (isSuccesfulExport) {
                     Service.INTERNAL_CAPACITIES_MAP.clear();
                     monitorEntityList.clear();
