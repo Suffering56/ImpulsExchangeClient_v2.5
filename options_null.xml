@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Options>
+	
+    <Department>
+		
+        <DepartmentName>655</DepartmentName>
+		
+        <SwndFilePath>C:\swnd5.arc</SwndFilePath>
+		
+        <SwndFileName>swnd5.arc</SwndFileName>
+	
+    </Department>
+
+    <FTP>
+		
+        <Address>:365636:;3=</Address>
+		
+        <Login>rfnqwz:tdqtlns</Login>
+		
+        <Password>nr;&gt;&gt;555ufxx</Password>
+	
+    </FTP>
+	
+    <Firebird>
+		
+        <DatabasePath>C:\</DatabasePath>
+		
+        <User>X^XIGF</User>
+		
+        <Password>rfxyjwpj~</Password>
+        
+        <Encoding>cp1251</Encoding>
+        
+        <FBServerPath>C:\Program Files\Firebird\BIN\fbserver.exe</FBServerPath>
+	
+    </Firebird>
+	
+    <MySQL>
+		
+        <Address>&gt;:3&lt;=378:36;&gt;</Address>
+                
+        <Port>8865</Port>
+                
+        <DatabaseName>rtsnytw</DatabaseName>
+		
+        <User>wtty</User>
+		
+        <Password/>
+	
+    </MySQL>
+
+</Options>
