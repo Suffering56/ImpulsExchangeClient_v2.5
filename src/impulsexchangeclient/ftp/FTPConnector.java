@@ -3,6 +3,7 @@ package impulsexchangeclient.ftp;
 import impulsexchangeclient.common.Options;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 
 public class FTPConnector {
@@ -39,7 +40,11 @@ public class FTPConnector {
             if (!ftpConnection.login(Options.getFtpLogin(), Options.getFtpPassword())) {
                 throw new IOException("FtpLoginException");
             }
+            /**
+             * Древняя магия. Не трогать. Без нее не обойтись.
+             */
             ftpConnection.enterLocalPassiveMode();
+            ftpConnection.setFileType(FTP.BINARY_FILE_TYPE);
 
         } catch (IOException ex) {
             disconnect();
