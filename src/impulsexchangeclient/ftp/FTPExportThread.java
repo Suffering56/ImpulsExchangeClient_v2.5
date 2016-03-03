@@ -94,8 +94,16 @@ public class FTPExportThread extends Thread {
                 String date = new Date(System.currentTimeMillis()).toLocaleString();
                 out.write((tempList + "          " + date + "\r\n").getBytes());
             }
+            out.close();
+            if (!ftpConnection.completePendingCommand()) {
+                JOptionPane.showMessageDialog(null, "Произошла ошибка при отправке информации обмена. \r\n"
+                        + "Пожалуйста перезапустите программу и отправьте эти заказы снова. \r\n"
+                        + "ex: ftpConnection.completePendingCommand() return FALSE.",
+                        "FTPExportThread.run()", JOptionPane.ERROR_MESSAGE);
+            }
         } catch (IOException | NullPointerException ex) {
-            throw new IOException("[UploadOrdersException]" + "\r\n"
+            throw new IOException("Произошла ошибка при отправке информации обмена. \r\n"
+                    + "Пожалуйста перезапустите программу и отправьте эти заказы снова. \r\n"
                     + "ex.toString(): " + ex.toString());
         }
     }
