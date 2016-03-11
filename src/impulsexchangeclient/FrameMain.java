@@ -12,6 +12,7 @@ import impulsexchangeclient.mysql.MySqlSender;
 import impulsexchangeclient.ftp.FTPExportPreLauncher;
 import impulsexchangeclient.menu.FrameHelpAdditional;
 import impulsexchangeclient.menu.FrameHelpErrors;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -286,6 +287,7 @@ public class FrameMain extends javax.swing.JFrame {
     public FrameMain() {
         initComponents();
         setLocationRelativeTo(null);
+        setIconImage(Toolkit.getDefaultToolkit().getImage("icon.png"));
         addOrderBtn.requestFocusInWindow();
     }
 
