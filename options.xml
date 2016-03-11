@@ -2,11 +2,11 @@
 	
     <Department>
 		
-        <DepartmentName>&lt;&gt;</DepartmentName>
+        <DepartmentName>756</DepartmentName>
 		
-        <SwndFilePath>F:\swnd5_13.arc</SwndFilePath>
+        <SwndFilePath>E:\swnd5.arc</SwndFilePath>
 		
-        <SwndFileName>swnd5_13.arc</SwndFileName>
+        <SwndFileName>swnd5.arc</SwndFileName>
 	
     </Department>
 
@@ -30,7 +30,7 @@
         
         <Encoding>cp1251</Encoding>
         
-        <FBServerPath>C:\WebServers\usr\local\firebird-2.1\bin\fbserver.exe</FBServerPath>
+        <FBServerPath>E:\WebServers\usr\local\firebird-2.1\bin\fbserver.exe</FBServerPath>
 	
     </Firebird>
 	
@@ -50,7 +50,7 @@
     
     <Admin>
 		
-        <Password>;&gt;&gt;</Password>
+        <Password/>
 	
     </Admin>
 
